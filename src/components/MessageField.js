@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const MessageField = ({ name, setText, text }) => {
   console.log(text, name);
-  const [iscomposed, setIsComposed] = useState(false);
+  const [isComposed, setIsComposed] = useState(false);
   return (
     <TextField
       fullWidth={true}
@@ -11,7 +11,7 @@ const MessageField = ({ name, setText, text }) => {
         setText(e.target.value);
       }}
       onKeyDown={(e) => {
-        if (iscomposed) return;
+        if (isComposed) return;
         const text = e.target.value;
         if (text === "") return;
 
