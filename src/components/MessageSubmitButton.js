@@ -10,7 +10,7 @@ import { pushMessage } from "../firebase";
 //   },
 // });
 
-const MessageSubmitButton = ({ name, setText, text }) => {
+const MessageSubmitButton = ({ inputEl, name, setText, text }) => {
   return (
     <IconButton
       disabled={text === ""}
@@ -18,6 +18,7 @@ const MessageSubmitButton = ({ name, setText, text }) => {
         console.log({ text }, { name });
         pushMessage({ name, text });
         setText("");
+        inputEl.current.focus();
       }}
     >
       <SendIcon />
