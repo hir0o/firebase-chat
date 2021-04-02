@@ -11,12 +11,11 @@ const useStyles = makeStyles({
   },
 });
 
-const MessageList = ({ room }) => {
+const MessageList = ({ roomRef }) => {
   const [messages, setMessages] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
-    const roomRef = database.ref(room);
     roomRef
       .orderByKey()
       .limitToLast(20)
@@ -24,7 +23,6 @@ const MessageList = ({ room }) => {
         const messages = snapshot.val();
         if (messages === null) return;
         const newMessages = Object.entries(messages).map((message) => {
-          console.log(message);
           const [key, nameAndText] = message;
           return {
             key,
@@ -37,11 +35,8 @@ const MessageList = ({ room }) => {
 
   const length = messages.length;
 
-  console.log(messages);
-
   return (
     <List className={classes.root}>
-      <h1>room: {room}</h1>
       {messages.map(({ key, name, text }, index) => {
         return (
           <MessageItem
