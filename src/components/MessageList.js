@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-const MessageList = () => {
+const MessageList = ({ room }) => {
   const [messages, setMessages] = useState([]);
   const classes = useStyles();
 
@@ -41,6 +41,7 @@ const MessageList = () => {
 
   return (
     <List className={classes.root}>
+      <h1>room: {room}</h1>
       {messages.map(({ key, name, text }, index) => {
         return (
           <MessageItem

@@ -31,14 +31,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({ setName }) {
+export default function SignIn({ setName, setRoom }) {
   const classes = useStyles();
   const [disabled, setDisabled] = useState(true);
-  const [string, setString] = useState("");
+  const [inpuName, setInputName] = useState("");
+  const [inpuRoom, setInputRoom] = useState("");
 
   useEffect(() => {
-    setDisabled(string === "");
-  }, [string]);
+    setDisabled(inpuName === "" || inpuRoom === "");
+  }, [inpuName, inpuRoom]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -52,7 +53,8 @@ export default function SignIn({ setName }) {
           noValidate
           onSubmit={(e) => {
             e.preventDefault();
-            setName(string);
+            setName(inpuName);
+            setRoom(inpuRoom);
           }}
         >
           <TextField
@@ -60,11 +62,22 @@ export default function SignIn({ setName }) {
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="name"
             label="ニックネーム"
             name="name"
             autoFocus
-            onChange={(e) => setString(e.target.value)}
+            onChange={(e) => setInputName(e.target.value)}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="room"
+            label="ルーム"
+            name="room"
+            autoFocus
+            onChange={(e) => setInputRoom(e.target.value)}
           />
           <Button
             type="submit"

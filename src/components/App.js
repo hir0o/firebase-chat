@@ -5,11 +5,12 @@ import Main from "./Main";
 
 function App() {
   const [name, setName] = useState("");
+  const [room, setRoom] = useState("");
 
-  if (name === "") {
-    return <SignIn setName={setName} />;
+  if (name === "" || room === "") {
+    return <SignIn setName={setName} setRoom={setRoom} />;
   } else {
-    return <Main name={name} />;
+    return <Main name={name} room={room} />;
   }
 }
 
