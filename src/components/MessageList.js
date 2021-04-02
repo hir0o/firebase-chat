@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import { List } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { messagesRef } from "../firebase";
+import { database } from "../firebase";
 import MessageItem from "./MessageItem";
 
 const useStyles = makeStyles({
@@ -16,8 +16,8 @@ const MessageList = ({ room }) => {
   const classes = useStyles();
 
   useEffect(() => {
-    console.log("useEffect");
-    messagesRef
+    const roomRef = database.ref(room);
+    roomRef
       .orderByKey()
       .limitToLast(20)
       .on("value", (snapshot) => {

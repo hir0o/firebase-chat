@@ -12,10 +12,10 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const database = firebase.database();
+export const database = firebase.database();
 
-export const messagesRef = database.ref("messages");
+// const messagesRef = database.ref("messages");
 
-export const pushMessage = ({ name, text }) => {
-  messagesRef.push({ name, text });
+export const pushMessage = ({ roomRef, name, text }) => {
+  roomRef.push({ name, text });
 };
