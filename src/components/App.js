@@ -6,10 +6,10 @@ import Main from "./Main";
 function App() {
   const [name, setName] = useState("");
 
-  if (false && name === "") {
+  if (name === "") {
     return <SignIn setName={setName} />;
   } else {
-    return <Main name={"hiroyuki"} />;
+    return <Main name={name} />;
   }
 }
 
