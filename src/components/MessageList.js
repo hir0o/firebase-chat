@@ -31,7 +31,7 @@ const MessageList = ({ roomRef }) => {
         });
         setMessages(newMessages);
       });
-  }, []);
+  }, [roomRef]);
 
   const length = messages.length;
 

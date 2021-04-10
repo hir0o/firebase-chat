@@ -17,3 +17,6 @@ export const database = firebase.database();
 export const pushMessage = ({ ref, name, text }) => {
   ref.push({ name, text });
 };
+
+const db = firebase.firestore();
+export const roomrRef = db.collection("room");
